@@ -2,14 +2,17 @@
   import Item from './components/Item.vue'
   import { useStore } from './stores/store'
   import type { ItemType } from './components/ItemType'
+  import { TypeEnum } from './components/ItemType'
+
 
   const store = useStore()
 
+  // TODO delete
   const addItem = () => {
     store.items.push({
       id: Date.now(),
       marks: [],
-      type: 'local',
+      type: TypeEnum.local,
       login: '',
       password: '',
     })
@@ -23,7 +26,7 @@
 
     <h1 class="pb-4">
       <span class="me-4">Учетные записи</span>
-      <button @click="addItem" class="btn btn-lg btn-outline-success">
+      <button @click="store.addEmptyItem" class="btn btn-lg btn-outline-success">
         <i class="bi bi-plus-lg"></i>
       </button>
     </h1>
